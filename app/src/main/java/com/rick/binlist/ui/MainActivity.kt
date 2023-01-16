@@ -1,4 +1,4 @@
-package com.rick.binlist
+package com.rick.binlist.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
