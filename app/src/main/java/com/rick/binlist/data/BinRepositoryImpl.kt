@@ -11,7 +11,7 @@ import javax.inject.Inject
 class BinRepositoryImpl @Inject constructor(
     private val db: BinDatabase,
     private val api: BinApi
-): IBinRepository {
+) : IBinRepository {
 
     override suspend fun fetchBin(bin: Int): Flow<BinSearchResult> {
 
