@@ -9,7 +9,7 @@ interface BinApi {
     @GET("/")
     suspend fun fetchBin(
         @Query("") bin: Int
-    ): Bin
+    ): Bin?
 
     companion object {
         const val BINLIST_BASE_URL = "https://lookup.binlist.net/"
