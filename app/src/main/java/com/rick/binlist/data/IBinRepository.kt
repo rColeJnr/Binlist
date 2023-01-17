@@ -1,6 +1,5 @@
-package com.rick.binlist.ui
+package com.rick.binlist.data
 
-import com.rick.binlist.data.Bin
 import com.rick.binlist.util.BinSearchResult
 import kotlinx.coroutines.flow.Flow
 

@@ -1,36 +1,37 @@
 package com.rick.binlist.data
 
-import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-@ProvidedTypeConverter
-class Converters(private val jsonParser: JsonParser) {
+@TypeConverters
+class Converters {
 
     @TypeConverter
     fun fromNumber(number: Number): String =
-        jsonParser.toJson<Number>(
+        Gson().toJson(
             number,
             object : TypeToken<Number>() {}.type
         ) ?: "[]"
 
     @TypeConverter
     fun toNumber(number: String): Number =
-        jsonParser.fromJson<Number>(
+        Gson().fromJson<Number>(
             number,
             object : TypeToken<Number>() {}.type
         )!!
 
     @TypeConverter
     fun fromCountry(country: Country): String =
-        jsonParser.toJson<Country>(
+        Gson().toJson(
             country,
             object : TypeToken<Country>() {}.type
         ) ?: "[]"
 
     @TypeConverter
     fun toCountry(country: String): Country =
-        jsonParser.fromJson<Country>(
+        Gson().fromJson<Country>(
             country,
             object : TypeToken<Country>() {}.type
         )!!

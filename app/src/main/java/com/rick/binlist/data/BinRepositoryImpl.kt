@@ -1,8 +1,6 @@
-package com.rick.binlist.ui
+package com.rick.binlist.data
 
 import androidx.room.withTransaction
-import com.rick.binlist.data.Bin
-import com.rick.binlist.data.BinDatabase
 import com.rick.binlist.util.BinSearchResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
