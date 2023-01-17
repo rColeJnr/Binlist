@@ -35,4 +35,18 @@ class Converters {
             country,
             object : TypeToken<Country>() {}.type
         )!!
+
+    @TypeConverter
+    fun fromBank(bank: Bank): String =
+        Gson().toJson(
+            bank,
+            object : TypeToken<Bank>() {}.type
+        ) ?: "[]"
+
+    @TypeConverter
+    fun toBank(bank: String): Bank =
+        Gson().fromJson<Bank>(
+            bank,
+            object : TypeToken<Bank>() {}.type
+        )!!
 }
