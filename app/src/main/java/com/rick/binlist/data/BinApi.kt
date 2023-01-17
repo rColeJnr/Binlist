@@ -1,13 +1,13 @@
 package com.rick.binlist.data
 
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface BinApi {
 
-    @GET("/")
+    @GET("/{id}")
     suspend fun fetchBin(
-        @Query("") bin: Int
+        @Path("id") bin: Int
     ): Bin?
 
     companion object {

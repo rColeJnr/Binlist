@@ -33,7 +33,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting(name: String, viewModel: BinViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+
     Column  {
         Text(text = "Hello $name!")
         Text(text = "Hello $name!")
