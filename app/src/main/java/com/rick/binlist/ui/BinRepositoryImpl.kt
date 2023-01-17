@@ -3,7 +3,7 @@ package com.rick.binlist.ui
 import androidx.room.withTransaction
 import com.rick.binlist.data.Bin
 import com.rick.binlist.data.BinDatabase
-import com.rick.binlist.util.Resource
+import com.rick.binlist.util.BinSearchResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -15,13 +15,13 @@ class BinRepositoryImpl @Inject constructor(
     private val api: BinApi
 ): IBinRepository {
 
-    override suspend fun fetchBin(bin: Int): Flow<Resource> {
+    override suspend fun fetchBin(bin: Int): Flow<BinSearchResult> {
 
         var bins: List<Bin> = listOf()
 
         return flow {
 
-            emit(Resource.Loading(true))
+            emit(BinSearchResult.Loading(true))
 
             try {
                 val response = api.fetchBin(bin)
@@ -30,15 +30,15 @@ class BinRepositoryImpl @Inject constructor(
                         saveBin(response)
                         bins = getBins()
                     }
-                    emit(Resource.Success(bins))
-                    emit(Resource.Loading(false))
+                    emit(BinSearchResult.Success(bins))
+                    emit(BinSearchResult.Loading(false))
                 }
             } catch (e: IOException) {
-                emit(Resource.Error(e.message))
-                emit(Resource.Loading(false))
+                emit(BinSearchResult.Error(e.message))
+                emit(BinSearchResult.Loading(false))
             } catch (e: HttpException) {
-                emit(Resource.Error(e.message))
-                emit(Resource.Loading(false))
+                emit(BinSearchResult.Error(e.message))
+                emit(BinSearchResult.Loading(false))
             }
 
         }
